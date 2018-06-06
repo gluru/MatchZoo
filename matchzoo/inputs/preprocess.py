@@ -13,9 +13,10 @@ from nltk.stem import SnowballStemmer
 
 sys.path.append('../inputs')
 sys.path.append('../utils')
-from preparation import *
-from rank_io import *
+from matchzoo.inputs.preparation import *
+from matchzoo.utils.rank_io import *
 
+xrange = range
 
 class Preprocess(object):
 

@@ -6,13 +6,13 @@ import keras.backend as K
 from keras.models import Sequential, Model
 from keras.layers import *
 from keras.optimizers import Adam
-from model import BasicModel
+from matchzoo.models.model import BasicModel
 
 sys.path.append('../matchzoo/layers/')
 sys.path.append('../matchzoo/utils/')
-from layers.MatchTensor import *
-from layers.SpatialGRU import *
-from utils.utility import *
+from matchzoo.layers.MatchTensor import *
+from matchzoo.layers.SpatialGRU import *
+from matchzoo.utils.utility import *
 
 
 class MATCHSRNN(BasicModel):

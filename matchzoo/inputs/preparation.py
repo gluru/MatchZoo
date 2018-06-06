@@ -8,8 +8,6 @@ import numpy as np
 import hashlib
 import random
 
-import preprocess
-
 
 class Preparation(object):
     '''Convert dataset of different text matching tasks into a unified format as the input of deep matching modules. Users provide datasets contain pairs of texts along with their labels, and the module produces the following files:

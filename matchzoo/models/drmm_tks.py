@@ -5,9 +5,9 @@ import keras
 import keras.backend as K
 from keras.models import Sequential, Model
 from keras.layers import *
-from model import BasicModel
+from matchzoo.models.model import BasicModel
 from keras.activations import softmax
-from utils.utility import *
+from matchzoo.utils.utility import *
 
 class DRMM_TKS(BasicModel):
     """DRMM_TKS model, this is a variant version of DRMM, which applied topk pooling in the matching matrix.

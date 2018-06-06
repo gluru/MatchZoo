@@ -8,9 +8,9 @@ from keras.models import Sequential, Model
 from keras.layers import *
 #from keras.layers import Reshape, Embedding,Merge, Dot, Lambda
 from keras.optimizers import Adam
-from model import BasicModel
+from matchzoo.models.model import BasicModel
 import tensorflow as tf
-from utils.utility import *
+from matchzoo.utils.utility import *
 
 class DUET(BasicModel):
     def __init__(self, config):

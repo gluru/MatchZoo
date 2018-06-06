@@ -7,9 +7,9 @@ from keras.models import Sequential, Model
 from keras.layers import *
 from keras.layers import Reshape, Embedding,Merge, Dot
 from keras.optimizers import Adam
-from model import BasicModel
-from utils.utility import *
-from layers.Match import *
+from matchzoo.models.model import BasicModel
+from matchzoo.utils.utility import *
+from matchzoo.layers.Match import *
 
 class MVLSTM(BasicModel):
     def __init__(self, config):

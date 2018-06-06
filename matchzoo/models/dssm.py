@@ -9,9 +9,9 @@ from keras.models import Sequential, Model
 from keras.layers import *
 from keras.activations import softmax
 import tensorflow as tf
-from model import BasicModel
-from utils.utility import *
-from layers.SparseFullyConnectedLayer import *
+from matchzoo.models.model import BasicModel
+from matchzoo.utils.utility import *
+from matchzoo.layers.SparseFullyConnectedLayer import *
 
 class DSSM(BasicModel):
     def __init__(self, config):
