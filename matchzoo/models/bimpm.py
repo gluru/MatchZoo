@@ -7,13 +7,13 @@ from keras.models import Sequential, Model
 from keras.layers import *
 from keras.layers import Reshape, Embedding, Merge, Dot
 from keras.optimizers import Adam
-from model import BasicModel
-from layers.DynamicMaxPooling import *
-from layers.BiLSTM import BiLSTM
-from layers.MultiPerspectiveMatch import MultiPerspectiveMatch
+from matchzoo.models.model import BasicModel
+from matchzoo.layers.DynamicMaxPooling import *
+from matchzoo.layers.BiLSTM import BiLSTM
+from matchzoo.layers.MultiPerspectiveMatch import MultiPerspectiveMatch
 #from layers.Attention import MultiPerspectiveAttention
-from layers.SequenceMask import SequenceMask
-from utils.utility import *
+from matchzoo.layers.SequenceMask import SequenceMask
+from matchzoo.utils.utility import *
 
 
 class BiMPM(BasicModel):

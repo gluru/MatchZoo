@@ -7,8 +7,8 @@ from keras.models import Sequential, Model
 from keras.layers import *
 from keras.initializers import Constant, RandomNormal, RandomUniform
 from keras.activations import softmax
-from model import BasicModel
-from utils.utility import *
+from matchzoo.models.model import BasicModel
+from matchzoo.utils.utility import *
 
 class KNRM(BasicModel):
     def __init__(self, config):

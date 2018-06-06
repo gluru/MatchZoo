@@ -6,8 +6,8 @@ from keras.layers import *
 from keras.layers import Input, Embedding, Dense, Activation, Lambda, Dot
 from keras.activations import softmax
 from keras.initializers import Constant, RandomNormal
-from model import BasicModel
-from utils.utility import *
+from matchzoo.models.model import BasicModel
+from matchzoo.utils.utility import *
 
 class CONVKNRM(BasicModel):
     def __init__(self, config):

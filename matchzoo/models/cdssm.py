@@ -8,8 +8,8 @@ from keras.models import Sequential, Model
 from keras.layers import *
 from keras.activations import softmax
 
-from model import BasicModel
-from utils.utility import *
+from matchzoo.models.model import BasicModel
+from matchzoo.utils.utility import *
 
 class CDSSM(BasicModel):
     def __init__(self, config):
