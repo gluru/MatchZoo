@@ -18,11 +18,13 @@ import keras
 import keras.backend as K
 from keras.models import Sequential, Model
 
-from utils import *
-from inputs import *
-from metrics import *
-from losses import *
-from optimizers import *
+import numpy as np
+
+import matchzoo.utils as utils
+import matchzoo.inputs as inputs
+import matchzoo.metrics as metrics
+import matchzoo.losses as losses
+import matchzoo.optimizers as optimizers
 
 config = tensorflow.ConfigProto()
 config.gpu_options.allow_growth = True
@@ -38,7 +40,7 @@ def load_model(config):
         model_config.update(config['inputs']['share'])
         sys.path.insert(0, config['model']['model_path'])
 
-        model = import_object(config['model']['model_py'], model_config)
+        model = utils.import_object(config['model']['model_py'], model_config)
         mo = model.build()
     return mo
 
@@ -63,11 +65,11 @@ def train(config):
 
     # collect embedding
     if 'embed_path' in share_input_conf:
-        embed_dict = read_embedding(filename=share_input_conf['embed_path'])
+        embed_dict = utils.read_embedding(filename=share_input_conf['embed_path'])
         _PAD_ = share_input_conf['vocab_size'] - 1
         embed_dict[_PAD_] = np.zeros((share_input_conf['embed_size'], ), dtype=np.float32)
         embed = np.float32(np.random.uniform(-0.2, 0.2, [share_input_conf['vocab_size'], share_input_conf['embed_size']]))
-        share_input_conf['embed'] = convert_embed_2_numpy(embed_dict, embed = embed)
+        share_input_conf['embed'] = utils.convert_embed_2_numpy(embed_dict, embed = embed)
     else:
         embed = np.float32(np.random.uniform(-0.2, 0.2, [share_input_conf['vocab_size'], share_input_conf['embed_size']]))
         share_input_conf['embed'] = embed
@@ -97,11 +99,11 @@ def train(config):
         if 'text1_corpus' in input_conf[tag]:
             datapath = input_conf[tag]['text1_corpus']
             if datapath not in dataset:
-                dataset[datapath], _ = read_data(datapath)
+                dataset[datapath], _ = utils.read_data(datapath)
         if 'text2_corpus' in input_conf[tag]:
             datapath = input_conf[tag]['text2_corpus']
             if datapath not in dataset:
-                dataset[datapath], _ = read_data(datapath)
+                dataset[datapath], _ = utils.read_data(datapath)
     print('[Dataset] %s Dataset Load Done.' % len(dataset), end='\n')
 
     # initial data generator
@@ -127,10 +129,10 @@ def train(config):
 
     loss = []
     for lobj in config['losses']:
-        if lobj['object_name'] in mz_specialized_losses:
-            loss.append(rank_losses.get(lobj['object_name'])(lobj['object_params']))
+        if lobj['object_name'] in losses.mz_specialized_losses:
+            loss.append(losses.rank_losses.get(lobj['object_name'])(lobj['object_params']))
         else:
-            loss.append(rank_losses.get(lobj['object_name']))
+            loss.append(losses.rank_losses.get(lobj['object_name']))
     eval_metrics = OrderedDict()
     for mobj in config['metrics']:
         mobj = mobj.lower()
@@ -217,11 +219,11 @@ def predict(config):
             if 'text1_corpus' in input_conf[tag]:
                 datapath = input_conf[tag]['text1_corpus']
                 if datapath not in dataset:
-                    dataset[datapath], _ = read_data(datapath)
+                    dataset[datapath], _ = utils.read_data(datapath)
             if 'text2_corpus' in input_conf[tag]:
                 datapath = input_conf[tag]['text2_corpus']
                 if datapath not in dataset:
-                    dataset[datapath], _ = read_data(datapath)
+                    dataset[datapath], _ = utils.read_data(datapath)
     print('[Dataset] %s Dataset Load Done.' % len(dataset), end='\n')
 
     # initial data generator
