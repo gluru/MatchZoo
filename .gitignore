@@ -14,6 +14,7 @@ log/*
 matchzoo/log/*
 matchzoo/querydecision/
 log/*
+venv/
 .idea/
 .pytest_cache/
 MatchZoo.egg-info/
