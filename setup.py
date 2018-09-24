@@ -15,11 +15,13 @@ setup(
     license="BSD",
     keywords="text matching models",
     url="https://github.com/faneshion/MatchZoo",
-    # ['data', 'docs', 'examples', 'matchzoo', 'tests'],
     packages=find_packages(),
-    # long_description=read('README.md'),
+    long_description='MatchZoo is a toolkit for text matching. '\
+	'It was developed with a focus on facilitating the designing, comparing and sharing of deep text matching models.'\
+	'There are a number of deep matching methods, such as DRMM, MatchPyramid, MV-LSTM, aNMM, DUET, ARC-I, ARC-II, DSSM, and CDSSM, designed with a unified interface.'\
+	'Potential tasks related to MatchZoo include document retrieval, question answering, conversational response ranking, paraphrase identification, etc. '\
+	'We are always happy to receive any code contributions, suggestions, comments from all our MatchZoo users.',
     classifiers=[
-        # How mature is this project? Common values are
         "Development Status :: 3 - Alpha",
         'Environment :: Console',
         'Operating System :: POSIX :: Linux',
@@ -40,7 +42,8 @@ setup(
         'h5py >= 2.7.0',
         'tqdm >= 4.19.4',
         'scipy >= 1.0.0',
-        'jieba >= 0.39'
+        'jieba >= 0.39',
+        'psutil >= 5.4.6'
     ],
     extras_require={
         'visualize': ['matplotlib >= 2.2.0'],
